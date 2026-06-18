@@ -1,73 +1,34 @@
-# React + TypeScript + Vite
+# Multi-Agent Playground
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Interactive demo of collaborative AI agents: PM writes specs, Dev generates code, Reviewer audits.
 
-Currently, two official plugins are available:
+## Quick Start
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+echo "VITE_OPENAI_API_KEY=sk-..." > .env.local
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Features
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- **3-agent pipeline**: PM → Dev → Reviewer sequential workflow
+- **Proactive mode**: PM auto-generates edge cases for Dev and Reviewer
+- **Session persistence**: All workflows saved to localStorage
+- **History browser**: View and reload past sessions
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Tech Stack
+
+- React 18 + TypeScript
+- Tailwind CSS
+- OpenAI-compatible API
+
+---
+
+### Part of the Hogan Dong Agent Stack
+
+This is the **interactive demo** layer. For production-grade multi-agent orchestration, see:
+
+> **[AgentForge](https://github.com/HoganDong486/agentforge)** — DAG-based workflow engine with memory, evaluation, and 30+ tools.
+>
+> Also: [Browser MCP](https://github.com/HoganDong486/opencode-browser-mcp) · [MCP Toolkit](https://github.com/HoganDong486/mcp-server-toolkit) · [RAG Agent](https://github.com/HoganDong486/rag-research-agent)
